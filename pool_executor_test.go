@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestExecutor(t *testing.T) {
+func TestPoolExecutor(t *testing.T) {
 	e := NewPooledExecutor(20)
 
 	var wg sync.WaitGroup
