@@ -1,22 +1,22 @@
 package executor
 
 import (
-	"fmt"
+	"log"
 	"sync"
 	"testing"
 	"time"
 )
 
 func TestPoolExecutor(t *testing.T) {
-	e := NewPooledExecutor(20)
+	e := NewPooledExecutor(2)
 
 	var wg sync.WaitGroup
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 40; i++ {
 		wg.Add(1)
 		e.enqueue(func() {
 			defer wg.Done()
-			time.Sleep(500 * time.Millisecond)
-			fmt.Println("hello")
+			time.Sleep(100 * time.Millisecond)
+			log.Println("hello")
 		})
 	}
 
